@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block pagecontent %}
+    {% include 'parts/breadcrumb.html' %}
+    <div class="row">
+        <div class="col-xs-12 col-sm-9">
+            {% if articles %}
+                {% for article in articles %}
+                    {% if forloop.last %}
+                        <div class="row">
+                            <div class="em-left-block">
+                                <a href="{{ article.url }}"><img class="img-responsive" src="{{ article.image }}"
+                                                                 onerror="this.src='{% static "/images/default_with_text_800x400.png" %}'"></a>
+                            </div>
+                            <div class="em-right-block">
+                                <a href="{{ article.url }}"><h1>{{ article.name }}</h1></a>
+                                <p>{{ article.short_text }}</p>
+                                <p class="em-date">{{ article.date }}</p>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="row em-row-indent">
+                            <div class="em-left-block">
+                                <a href="{{ article.url }}"><img class="img-responsive" src="{{ article.image }}"
+                                                                 onerror="this.src='{% static "/images/default_with_text_800x400.png" %}'"></a>
+                            </div>
+                            <div class="em-right-block">
+                                <a href="{{ article.url }}"><h1>{{ article.name }}</h1></a>
+                                <p>{{ article.short_text }}</p>
+                                <p class="em-date">{{ article.date }}</p>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="col-xs-12 col-sm-3">
+            {% include 'parts/news_block.html' %}
+            {% include 'parts/discount_block.html' %}
+        </div>
+    </div>
+{% endblock %}

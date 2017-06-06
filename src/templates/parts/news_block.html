@@ -1,0 +1,16 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Последние новости</h3>
+    </div>
+    <div class="panel-body">
+        {% for obj in latest_article %}
+            <a href="{{ obj.url }}"><h5>{{ obj.name }}</h5></a>
+            <p>{{ obj.text }}</p>
+        {% endfor %}
+    </div>
+    {% if all_news_count > 1 %}
+        <div class="panel-footer">
+            <a href="{% url 'articles' %}">Все новости <span class="badge">{{ all_news_count }}</span></a>
+        </div>
+    {% endif %}
+</div>

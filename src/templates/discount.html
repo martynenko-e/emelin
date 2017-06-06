@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block pagecontent %}
+    {% include 'parts/breadcrumb.html' %}
+    <div class="row">
+        <div class="col-xs-12 col-sm-9">
+            {% if discount_list %}
+                {% for discount in discount_list %}
+                    <div class="col-xs-12 col-sm-6">
+                        <img width="100%" class="img-responsive"
+                             src="{% static '/images/default_with_text_800x400.png' %}">
+                        <div class="image_description_block"><h4>{{ discount.text }}</h4></div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="col-xs-12 col-sm-3">
+            {% include 'parts/news_block.html' %}
+            {% include 'parts/discount_block.html' %}
+        </div>
+    </div>
+{% endblock %}

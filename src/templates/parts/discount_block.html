@@ -1,0 +1,15 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Новые акции</h3>
+    </div>
+    <div class="panel-body">
+        {% for obj in latest_discount %}
+            <p>{{ obj.text }}</p>
+        {% endfor %}
+    </div>
+    {% if all_discount_count > 1 %}
+        <div class="panel-footer">
+            <a href="{% url 'discount' %}">Все акции <span class="badge">{{ all_discount_count }}</span></a>
+        </div>
+    {% endif %}
+</div>

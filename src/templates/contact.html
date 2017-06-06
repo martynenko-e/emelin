@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block pagecontent %}
+    {% include 'parts/breadcrumb.html' %}
+    <div class="row">
+        <div class="col-xs-12 col-sm-9">
+            <h3><img width="30px" src="{% static 'images/phone.png' %}"> {{ phone }}</h3>
+            <h3><img width="30px" src="{% static 'images/pin_map.ico' %}"> {{ address }}</h3>
+            {% if working_hour %}
+                {% for hour in working_hour %}
+                    <h3><img width="30px" src="{% static 'images/time.png' %}"> {{ hour.day }}</h3>
+                {% endfor %}
+            {% endif %}
+            <p>{{ about }}</p>
+            {% include 'parts/google_map.html' %}
+        </div>
+        <div class="col-xs-12 col-sm-3">
+            {% include 'parts/news_block.html' %}
+            {% include 'parts/discount_block.html' %}
+        </div>
+    </div>
+{% endblock %}

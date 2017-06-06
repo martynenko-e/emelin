@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block pagecontent %}
+    <div class="row">
+        <div class="col-xs-12">
+            <ol class="breadcrumb">
+                <li><a href="/">Главная</a></li>
+                <li><a href="/service/">Все услуги</a></li>
+                <li>{{ category_name }}</li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-9">
+        <img src="{{ image }}" width="100%" onerror="this.src='{% static "/images/default_with_text_800x400.png" %}'">
+            <p>{{ description }}</p>
+            {% if services %}
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Время</th>
+                        <th>Название</th>
+                        <th>Цена</th>
+                    </tr>
+                    </thead>
+                    {% for service in services %}
+                        <tr>
+                            <td>{{ service.time }}</td>
+                            <td>{{ service.name }}</td>
+                            <td>{{ service.price }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            {% endif %}
+        </div>
+        <div class="col-xs-12 col-sm-3">
+            {% include 'parts/news_block.html' %}
+            {% include 'parts/discount_block.html' %}
+        </div>
+    </div>
+
+{% endblock %}

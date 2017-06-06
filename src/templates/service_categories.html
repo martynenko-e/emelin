@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block pagecontent %}
+    {% include 'parts/breadcrumb.html' %}
+    <div class="row">
+        <div class="col-xs-12 col-sm-9">
+            {% for service in services %}
+                <div class="col-xs-12 col-sm-6">
+                    <div class="image_block">
+                        <a href="{{ service.url }}"><h3>{{ service.name }}</h3>
+                            <div class="img__wrap">
+                                <img src="{{ service.image }}" onerror="this.src='{% static "/images/default_with_text_800x400.png" %}';" width="100%">
+                                <h4 class="img__description">{{ service.short_text }}</h4>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="col-xs-12 col-sm-3">
+            {% include 'parts/news_block.html' %}
+            {% include 'parts/discount_block.html' %}
+        </div>
+    </div>
+{% endblock %}

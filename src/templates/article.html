@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block pagecontent %}
+    <div class="row">
+        <div class="col-xs-12">
+            <ol class="breadcrumb">
+                <li><a href="/">Главная</a></li>
+                <li><a href="/articles/">Все статьи</a></li>
+                <li>{{ article_name }}</li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-9">
+            {{ article_description|safe }}
+        </div>
+        <div class="col-xs-12 col-sm-3">
+            {% include 'parts/news_block.html' %}
+            {% include 'parts/discount_block.html' %}
+        </div>
+    </div>
+{% endblock %}
